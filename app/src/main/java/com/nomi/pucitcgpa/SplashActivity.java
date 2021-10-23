@@ -20,14 +20,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        final ImageView imageView = findViewById(R.id.image_activity_1);
+      //  final ImageView imageView = findViewById(R.id.image_activity_1);
 
         setTitle("main activity");
-        Fade fade = new Fade();
-        View decor = getWindow().getDecorView();
-        fade.excludeTarget(decor.findViewById(R.id.action_bar_container), true);
-        fade.excludeTarget(android.R.id.statusBarBackground, true);
-        fade.excludeTarget(android.R.id.navigationBarBackground, true);
+//        Fade fade = new Fade();
+//        View decor = getWindow().getDecorView();
+//        fade.excludeTarget(decor.findViewById(R.id.action_bar_container), true);
+//        fade.excludeTarget(android.R.id.statusBarBackground, true);
+//        fade.excludeTarget(android.R.id.navigationBarBackground, true);
 
 
 
@@ -42,8 +42,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent mySuperIntent = new Intent(SplashActivity.this, LoginActivity.class);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(SplashActivity.this, imageView, ViewCompat.getTransitionName(imageView));
-                startActivity(mySuperIntent, options.toBundle());
+               // ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(SplashActivity.this, imageView, ViewCompat.getTransitionName(imageView));
+                //startActivity(mySuperIntent, options.toBundle());
+                startActivity(mySuperIntent);
                 finish();
             }
         }, SPLASH_TIME);

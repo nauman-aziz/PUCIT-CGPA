@@ -59,19 +59,19 @@ public class LoginActivity extends AppCompatActivity {
 //
 //        // TODO: Implement your own signup logic here.
 //
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        // On complete call either onSignupSuccess or onSignupFailed
-//                        // depending on success
-//                        onLoginSuccess();
-//                        //onSignupFailed();
-//                        progressDialog.dismiss();
-//                        Toast.makeText(LoginActivity.this, "Welcome "+_nameText.getText().toString(), Toast.LENGTH_SHORT).show();
-//                        openSemesterActivity();
-//                    }
-//                }, 1000);
-       // openSemesterActivity();
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        // On complete call either onSignupSuccess or onSignupFailed
+                        // depending on success
+                      //  onLoginSuccess();
+                        //onSignupFailed();
+                       // progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Welcome "+_nameText.getText().toString(), Toast.LENGTH_SHORT).show();
+                       // openSemesterActivity();
+                    }
+                }, 1000);
+        openCalculationActivity();
 
     }
     public boolean validate() {
@@ -146,11 +146,11 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
-//    private void openSemesterActivity() {
-//        Intent intent = new Intent(this , CGPA.class);
-//        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this ,_imageView , Objects.requireNonNull(ViewCompat.getTransitionName(_imageView)));
-//        startActivity(intent , options.toBundle());
-//        // overridePendingTransition(R.anim.slide_in_right , R.anim.slide_out_left);
-//    }
+    private void openCalculationActivity() {
+        Intent intent = new Intent(this , CalculationActivity.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this ,_imageView , Objects.requireNonNull(ViewCompat.getTransitionName(_imageView)));
+        startActivity(intent , options.toBundle());
+        // overridePendingTransition(R.anim.slide_in_right , R.anim.slide_out_left);
+    }
 
 }
