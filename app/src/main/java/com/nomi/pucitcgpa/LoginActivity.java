@@ -31,6 +31,77 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+    public boolean validate() {
 
+        boolean valid = true;
+        User user = User.getInstance();
+
+        String name = _nameText.getText().toString();
+        String email = _emailText.getText().toString();
+        name = name.toUpperCase();
+        email = email.toUpperCase();
+
+        if (name.isEmpty() || name.length() < 3) {
+            _nameText.setError("at least 3 characters");
+            valid = false;
+            return false;
+        } else {
+            user.setUser_name(name);
+            _nameText.setError(null);
+        }
+
+        if (email.isEmpty() ) {
+            _emailText.setError("enter a valid email address");
+            valid = false;
+            return false;
+        } else {
+            _emailText.setError(null);
+        }
+        if(email.substring(0,3).equals("BIT") || email.substring(0, 3).equals("BSE") || email.substring(0, 3).equals("BCS") || email.substring(0, 3).equals("MCS") || email.substring(0, 3).equals("MIT")){
+            user.setUser_degree(email.substring(0,3));
+            if(email.substring(3,4).equals("F")) {
+                if(email.substring(6,7).equals("A") || email.substring(6,7).equals("M")){
+                    user.setShift(email.substring(6,7));
+                    if(email.substring(7,8).equals("5") || email.substring(7,8).equals("0")){
+                        user.setCampus(email.substring(7,8));
+                        if(email.substring(10,11).equals("@")) {
+                            if (email.substring(11, 16).equals("PUCIT")) {
+                                if (email.substring(16,17).equals(".")) {
+                                    if (email.substring(17, 20).equals("EDU")) {
+                                        if (email.substring(20, 23).equals(".PK")) {
+                                            valid = true;
+                                            user.setUser_email(email);
+                                            user.setUser_rollNo(email.substring(0, 10));
+                                            user.setUser_batch(email.substring(4, 6));
+                                        } else {
+                                            _emailText.setError("you forget to put '.PK' after 'EDU'");
+                                            valid = false; }
+                                    } else {
+                                        _emailText.setError("you forget to put 'EDU' after '.'");
+                                        valid = false; }
+                                } else {
+                                    _emailText.setError("you forget to put '.' after pucit");
+                                    valid = false; }
+                            } else {
+                                _emailText.setError("you forget to put 'PUCIT'");
+                                valid = false; }
+                        }else{
+                            _emailText.setError("you forget to put '@' ");
+                            valid = false; }
+                    }else {
+                        _emailText.setError("Invalid campus");
+                        valid= false; }
+                }else{
+                    valid= false;
+                    _emailText.setError("Invalid shift"); }
+            }else {
+                valid= false;
+                _emailText.setError("Invalid fall"); }
+        } else {
+            valid= false;
+            _emailText.setError("Invalid degree"); }
+
+        return valid;
+    }
 
 }
