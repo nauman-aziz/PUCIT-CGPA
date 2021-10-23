@@ -1,13 +1,19 @@
 package com.nomi.pucitcgpa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     EditText _nameText , _emailText  ;
@@ -28,7 +34,44 @@ public class LoginActivity extends AppCompatActivity {
         _emailText = findViewById(R.id.input_email);
         _loginButton = findViewById(R.id.btn_login);
         _imageView = findViewById(R.id.image_activity_1);
+        _loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Finish the registration screen and return to the Login activity
+                if (validate()) {
+                    //displayNotification(v);
 
+                    login();
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+    public void login() {
+//        Log.d("LoginActivity", "Signup");
+//        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Login into Account...");
+//        progressDialog.show();
+//
+//        // TODO: Implement your own signup logic here.
+//
+//        new android.os.Handler().postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        // On complete call either onSignupSuccess or onSignupFailed
+//                        // depending on success
+//                        onLoginSuccess();
+//                        //onSignupFailed();
+//                        progressDialog.dismiss();
+//                        Toast.makeText(LoginActivity.this, "Welcome "+_nameText.getText().toString(), Toast.LENGTH_SHORT).show();
+//                        openSemesterActivity();
+//                    }
+//                }, 1000);
+       // openSemesterActivity();
 
     }
     public boolean validate() {
@@ -103,5 +146,11 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+//    private void openSemesterActivity() {
+//        Intent intent = new Intent(this , CGPA.class);
+//        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this ,_imageView , Objects.requireNonNull(ViewCompat.getTransitionName(_imageView)));
+//        startActivity(intent , options.toBundle());
+//        // overridePendingTransition(R.anim.slide_in_right , R.anim.slide_out_left);
+//    }
 
 }

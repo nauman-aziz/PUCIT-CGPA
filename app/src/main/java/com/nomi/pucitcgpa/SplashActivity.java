@@ -2,6 +2,7 @@ package com.nomi.pucitcgpa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,9 +41,9 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-               // Intent mySuperIntent = new Intent(SplashActivity.this, LoginActivity.class);
-              //  ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, imageView, ViewCompat.getTransitionName(imageView));
-              //  startActivity(mySuperIntent, options.toBundle());
+                Intent mySuperIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(SplashActivity.this, imageView, ViewCompat.getTransitionName(imageView));
+                startActivity(mySuperIntent, options.toBundle());
                 finish();
             }
         }, SPLASH_TIME);
