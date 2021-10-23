@@ -28,5 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         _emailText = findViewById(R.id.input_email);
         _loginButton = findViewById(R.id.btn_login);
         _imageView = findViewById(R.id.image_activity_1);
+
+
     }
+
+
 }
