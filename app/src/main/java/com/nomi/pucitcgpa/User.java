@@ -6,8 +6,6 @@ public class User extends android.app.Application {
     private static User user = null;
     private String user_name , user_email , user_rollNo , user_degree , user_batch , shift , campus ;
     private int semester , noOfSubjects;
-
-    //public ArrayList<String> subjects = new ArrayList<>();
     public User(){};
 
     public static User getInstance(){

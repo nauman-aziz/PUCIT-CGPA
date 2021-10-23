@@ -2,6 +2,7 @@ package com.nomi.pucitcgpa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class CalculationActivity extends AppCompatActivity {
     private EditText gradeEdit;
     private EditText creditEdit;
 
+    private Button help;
     private Button add;
     private Button calc;
     private Button reset;
@@ -39,6 +41,7 @@ public class CalculationActivity extends AppCompatActivity {
         add = findViewById(R.id.addButtonId);
         calc = findViewById(R.id.calculateButtonId);
         reset = findViewById(R.id.resetButtonId);
+        help = findViewById(R.id.HelpButton);
 
         cgpaText = findViewById(R.id.cgpaTextViewId);
         courseText = findViewById(R.id.addedCourseTextViewId);
@@ -117,6 +120,14 @@ public class CalculationActivity extends AppCompatActivity {
                 creditEdit.getText().clear();
 
                 Toast.makeText(CalculationActivity.this, "Reseted", Toast.LENGTH_SHORT).show();
+            }
+        });
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext() , HelpActivity.class);
+                startActivity(intent);
+
             }
         });
 
